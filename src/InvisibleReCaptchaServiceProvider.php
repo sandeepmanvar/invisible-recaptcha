@@ -27,7 +27,7 @@ class InvisibleReCaptchaServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('captcha', function ($app) {
+        $this->app->singleton('recaptcha', function ($app) {
             return new InvisibleReCaptcha(
                 $app['config']['captcha.siteKey'],
                 $app['config']['captcha.secretKey'],
@@ -63,7 +63,7 @@ class InvisibleReCaptchaServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['captcha'];
+        return ['recaptcha'];
     }
 
     /**
@@ -72,16 +72,16 @@ class InvisibleReCaptchaServiceProvider extends ServiceProvider
      */
     public function addBladeDirective(BladeCompiler $blade)
     {
-        $blade->directive('captcha', function ($lang) {
+        $blade->directive('recaptcha', function ($lang) {
             return "<?php echo app('captcha')->render({$lang}); ?>";
         });
-        $blade->directive('captchaPolyfill', function () {
+        $blade->directive('recaptchaPolyfill', function ($lang) {
             return "<?php echo app('captcha')->renderPolyfill({$lang}); ?>";
         });
-        $blade->directive('captchaHTML', function () {
+        $blade->directive('recaptchaHTML', function () {
             return "<?php echo app('captcha')->renderCaptchaHTML(); ?>";
         });
-        $blade->directive('captchaScripts', function ($lang) {
+        $blade->directive('recaptchaScripts', function ($lang) {
             return "<?php echo app('captcha')->renderFooterJS({$lang}); ?>";
         });
     }
