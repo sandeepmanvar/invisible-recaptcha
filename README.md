@@ -69,19 +69,19 @@ Before you render the captcha, please keep those notices in mind:
 ##### Display reCAPTCHA in Your View
 
 ```php
-{!! app('captcha')->render() !!}
+{!! app('recaptcha')->render() !!}
 
 // or you can use this in blade
-@captcha
+@recaptcha
 ```
 
 With custom language support:
 
 ```php
-{!! app('captcha')->render('en') !!}
+{!! app('recaptcha')->render('en') !!}
 
 // or you can use this in blade
-@captcha('en')
+@recaptcha('en')
 ```
 
 ##### Usage with Javascript frameworks like VueJS:
@@ -91,29 +91,29 @@ The `render()` process includes three distinct sections that can be rendered sep
 You can render the polyfill (do this somewhere like the head of your HTML:)
 
 ```php
-{!! app('captcha')->renderPolyfill() !!}
+{!! app('recaptcha')->renderPolyfill() !!}
 // Or with blade directive:
-@captchaPolyfill
+@recaptchaPolyfill
 ```
 
 You can render the HTML using this following, this needs to be INSIDE your `<form>` tag:
 
 ```php
-{!! app('captcha')->renderCaptchaHTML() !!}
+{!! app('recaptcha')->renderCaptchaHTML() !!}
 // Or with blade directive:
-@captchaHTML
+@recaptchaHTML
 ```
 
 And you can render the neccessary `<script>` tags including the optional language support by using:
 
 ```php
 // The argument is optional.
-{!! app('captcha')->renderFooterJS('en') !!}
+{!! app('recaptcha')->renderFooterJS('en') !!}
 
 // Or with blade directive:
-@captchaScripts
+@recaptchaScripts
 // blade directive, with language support:
-@captchaScripts('en')
+@recaptchaScripts('en')
 
 ```
 
